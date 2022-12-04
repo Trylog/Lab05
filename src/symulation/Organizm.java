@@ -1,5 +1,7 @@
 package symulation;
 
+import main.Main;
+
 public class Organizm extends Thread{
 	public int pożywienie;
 	public int żywotność;
@@ -15,7 +17,7 @@ public class Organizm extends Thread{
 
 			try {
 				//System.out.println("sen");
-				Thread.sleep(2000);
+				Thread.sleep(Main.czasOrganizmu);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}

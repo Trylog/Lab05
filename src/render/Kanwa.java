@@ -11,7 +11,7 @@ public class Kanwa extends JPanel{
 	JLabel[] labelkiLab;
 	public Kanwa(){
 
-		this.setBounds(0,0,500,800);
+		this.setBounds(0,0,350,800);
 		labelkiOrg=new JLabel[Main.liczbaOrganizmów];
 		labelkiLab=new JLabel[Main.liczbaLaborantów];
 		for (int i =0; i<Main.liczbaOrganizmów;i++){
@@ -25,8 +25,6 @@ public class Kanwa extends JPanel{
 			this.add(labelkiLab[j]);
 		}
 		//this.setBackground(Color.cyan);
-
-
 	}
 	@Override
 	protected void paintComponent(Graphics arg0) {
@@ -47,11 +45,11 @@ public class Kanwa extends JPanel{
 		}
 		for (int j=0; j<Main.liczbaLaborantów;j++){
 			if(Main.laboranci[j].pozycja!=-1){
-				labelkiLab[j].setText("L: "+Main.laboranci[j].zbiornik);
+				labelkiLab[j].setText("L"+j+": "+Main.laboranci[j].zbiornik);
 				labelkiLab[j].setBounds(150+10,(800-Main.liczbaOrganizmów*25)/2+Main.laboranci[j].pozycja*25,50,25);
 				labelkiLab[j].repaint();
 			}else {
-				labelkiLab[j].setText("L: "+Main.laboranci[j].zbiornik);
+				labelkiLab[j].setText("L"+j+": "+Main.laboranci[j].zbiornik);
 				labelkiLab[j].setBounds(50+10,(800-25)/2,50,25);
 				labelkiLab[j].repaint();
 			}

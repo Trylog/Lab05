@@ -46,7 +46,7 @@ public class Linia {
 				return poz+i;
 			}
 			if (poz-i>=0&&linia[poz-i]==false){
-				linia[poz-1]=true;
+				linia[poz-i]=true;
 				return poz-i;
 			}
 		}

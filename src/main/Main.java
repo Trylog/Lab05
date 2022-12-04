@@ -1,9 +1,13 @@
+//Michał Bernacki-Janson
+
 package main;
 
 import render.MainFrame;
 import symulation.Dystrybutor;
 import symulation.Laborant;
 import symulation.Organizm;
+
+import javax.swing.*;
 
 public class Main {
 
@@ -12,23 +16,47 @@ public class Main {
 	public static int liczbaOrganizmów;
 	public static int liczbaLaborantów;
 	public static Laborant[] laboranci;
+	public static int czasDystrybutor, czasOrganizmu, czasLaboranta;
 
 	public static void main(String[] args) {
 
-		liczbaOrganizmów=15;
-		liczbaLaborantów=2;
+		String odp0, odp1, odp2, odp3, odp4;
+		odp0 = JOptionPane.showInputDialog("Podaj liczbę organizmów");
+		liczbaOrganizmów=Integer.parseInt(odp0);
+		while (liczbaOrganizmów<1||liczbaOrganizmów>30){
+			JOptionPane.showMessageDialog(null, "Nie poprawna liczba organizmów", "Błąd", JOptionPane.ERROR_MESSAGE);
+			odp0=JOptionPane.showInputDialog("Podaj liczbę organizmów");
+			liczbaOrganizmów=Integer.parseInt(odp0);
+		}
+		//liczbaOrganizmów=15;
+		odp1=JOptionPane.showInputDialog("Podaj liczbę laborantów");
+		liczbaLaborantów=Integer.parseInt(odp1);
+		while (liczbaLaborantów<1||liczbaLaborantów>liczbaOrganizmów){
+			JOptionPane.showMessageDialog(null,"Nie poprawna liczba laborantów","Błąd", JOptionPane.ERROR_MESSAGE);
+			odp1=JOptionPane.showInputDialog("Podaj liczbę laborantów");
+			liczbaLaborantów=Integer.parseInt(odp1);
+		}
+		odp2=JOptionPane.showInputDialog("Podaj czas potrzebny na napełnienie zbiornika laboranta");
+		czasDystrybutor=Integer.parseInt(odp2);
+		odp3=JOptionPane.showInputDialog("Podaj czas potrzebny na przemieszczenie się laboranta");
+		czasLaboranta=Integer.parseInt(odp3);
+		odp4=JOptionPane.showInputDialog("Podaj czas, po którym organizm zje jedno pożywienie");
+		czasOrganizmu=Integer.parseInt(odp4);
+
 
 		linia=new Linia(liczbaOrganizmów);
 		dystrybutor=new Dystrybutor();
 
 		laboranci = new Laborant[liczbaLaborantów];
-		laboranci[0]=new Laborant(1,true);
-		laboranci[0].setDaemon(true);
-		laboranci[0].start();
-		laboranci[1]=new Laborant(5,true);
-		laboranci[1].setDaemon(true);
-		laboranci[1].start();
+		for (int i=0;i<liczbaLaborantów;i++){
+			laboranci[i]=new Laborant(liczbaOrganizmów/liczbaLaborantów*i,i%2==0?false:true);
+			linia.linia[i]=true;
+			laboranci[i].setDaemon(true);
 
+		}
+		for (int i=0;i<liczbaLaborantów;i++){
+			laboranci[i].start();
+		}
 
 		MainFrame f =new MainFrame();
 	}

@@ -27,7 +27,7 @@ public class Laborant extends Thread{
 			//System.out.println(test);
 			//test++;
 			try {
-				Thread.sleep(500);
+				Thread.sleep(Main.czasLaboranta);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}

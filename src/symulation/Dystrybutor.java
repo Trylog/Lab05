@@ -8,7 +8,7 @@ public class Dystrybutor{
 		try {
 			Main.linia.uwolnij(lab.pozycja);
 			lab.pozycja=-1;
-			wait(10000);
+			Thread.sleep(Main.czasDystrybutor);
 			System.out.println("koniec uzupełniania");
 		} catch (InterruptedException e) {
 			e.printStackTrace();
