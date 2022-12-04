@@ -15,7 +15,7 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		liczbaOrganizmów=10;
+		liczbaOrganizmów=15;
 		liczbaLaborantów=2;
 
 		linia=new Linia(liczbaOrganizmów);

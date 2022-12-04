@@ -1,10 +1,13 @@
 package symulation;
 
+import main.Linia;
 import main.Main;
 
 public class Laborant extends Thread{
 	public int zbiornik;
 	public int pozycja;
+	private static int maxId=0;
+	private int id;
 	boolean kierunek;
 	//int test;
 	@Override
@@ -32,14 +35,21 @@ public class Laborant extends Thread{
 		}
 	}
 	public Laborant(int pozycja, boolean kierunek){
+		id=maxId;
+		maxId++;
 		this.pozycja=pozycja;
 		this.kierunek=kierunek;
 		zbiornik=50;
 		//test=0;
 	}
-	private void uzupełnijZbiornik(){
-
-		Main.dystrybutor.uzupełnij();
+	private synchronized void uzupełnijZbiornik(){
+		int temp=pozycja;
+		Main.dystrybutor.uzupełnij(this);
 		zbiornik=50;
+		try {
+			pozycja = Main.linia.wróćNaLinie(temp);
+		} catch (Exception e) {
+			System.out.println("Błąd miejsca na linii");
+		}
 	}
 }

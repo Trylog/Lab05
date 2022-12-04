@@ -46,12 +46,20 @@ public class Kanwa extends JPanel{
 			labelkiOrg[i].repaint();
 		}
 		for (int j=0; j<Main.liczbaLaborantów;j++){
-			labelkiLab[j].setText("L: "+Main.laboranci[j].zbiornik);
-			labelkiLab[j].setBounds(150+10,(800-Main.liczbaOrganizmów*25)/2+Main.laboranci[j].pozycja*25,50,25);
-			labelkiLab[j].repaint();
+			if(Main.laboranci[j].pozycja!=-1){
+				labelkiLab[j].setText("L: "+Main.laboranci[j].zbiornik);
+				labelkiLab[j].setBounds(150+10,(800-Main.liczbaOrganizmów*25)/2+Main.laboranci[j].pozycja*25,50,25);
+				labelkiLab[j].repaint();
+			}else {
+				labelkiLab[j].setText("L: "+Main.laboranci[j].zbiornik);
+				labelkiLab[j].setBounds(50+10,(800-25)/2,50,25);
+				labelkiLab[j].repaint();
+			}
+
 		}
 
 		Graphics2D rys = (Graphics2D) g;
+		rys.drawRect(50,(800-25)/2,50,25);
 		rys.drawLine(150, (800-Main.liczbaOrganizmów*25)/2,150,Main.liczbaOrganizmów*25+(800-Main.liczbaOrganizmów*25)/2);
 		rys.drawLine(200, (800-Main.liczbaOrganizmów*25)/2,200,Main.liczbaOrganizmów*25+(800-Main.liczbaOrganizmów*25)/2);
 		rys.drawLine(275, (800-Main.liczbaOrganizmów*25)/2,275,Main.liczbaOrganizmów*25+(800-Main.liczbaOrganizmów*25)/2);

@@ -38,8 +38,21 @@ public class Linia {
 				return poz+1;
 			}else return poz;
 		}
-
-
 	}
-
+	public synchronized int wróćNaLinie(int poz) throws Exception {
+		for (int i =0;poz+i<długość||poz-i>=0;i++){
+			if(poz+i<długość&&linia[poz+i]==false){
+				linia[poz+i]=true;
+				return poz+i;
+			}
+			if (poz-i>=0&&linia[poz-i]==false){
+				linia[poz-1]=true;
+				return poz-i;
+			}
+		}
+		throw new Exception("dziwny błąd");
+	}
+	public synchronized void uwolnij(int poz){
+		linia[poz]=false;
+	}
 }

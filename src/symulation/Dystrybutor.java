@@ -1,16 +1,15 @@
 package symulation;
 
-public class Dystrybutor extends Thread{
+import main.Main;
 
-	@Override
-	public void run(){
+public class Dystrybutor{
 
-	}
-
-	public synchronized void uzupełnij() {
-
+	public synchronized void uzupełnij(Laborant lab) {
 		try {
+			Main.linia.uwolnij(lab.pozycja);
+			lab.pozycja=-1;
 			wait(10000);
+			System.out.println("koniec uzupełniania");
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
