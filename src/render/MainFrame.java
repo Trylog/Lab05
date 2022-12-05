@@ -6,7 +6,7 @@ import java.awt.*;
 public class MainFrame extends JFrame {
 	Kanwa scena;
 	public MainFrame(){
-		this.setSize(new Dimension(400,835));
+		this.setSize(new Dimension(500,835));
 		this.setName("Lab05");
 		this.setVisible(true);
 		this.setLayout(null);

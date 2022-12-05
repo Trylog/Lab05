@@ -42,15 +42,17 @@ public class Main {
 		czasLaboranta=Integer.parseInt(odp3);
 		odp4=JOptionPane.showInputDialog("Podaj czas, po którym organizm zje jedno pożywienie");
 		czasOrganizmu=Integer.parseInt(odp4);
-
-
+/*
+		czasDystrybutor=5000;
+		czasOrganizmu=2000;
+		czasLaboranta=500;*/
 		linia=new Linia(liczbaOrganizmów);
 		dystrybutor=new Dystrybutor();
 
 		laboranci = new Laborant[liczbaLaborantów];
 		for (int i=0;i<liczbaLaborantów;i++){
 			laboranci[i]=new Laborant(liczbaOrganizmów/liczbaLaborantów*i,i%2==0?false:true);
-			linia.linia[i]=true;
+			linia.linia[liczbaOrganizmów/liczbaLaborantów*i]=true;
 			laboranci[i].setDaemon(true);
 
 		}
